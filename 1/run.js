@@ -2007,12 +2007,19 @@ const compareMeasurement = (data) => {
         if(i>0 && element > data[i-1]){
             result++;
         }
-        //if values are equals, log i 
-        if(element === data[i-1]){
-            console.log(i)
-        }
     });
     console.log(result);
 }
 
+const computeWindowsValues = (data) => {
+    let windowsValues = []
+    for (let index = 2; index < data.length; index++) {
+        //push the sum of the current and the 2 previous values
+        windowsValues.push(data[index-2]+data[index-1]+data[index]);        
+    }
+    console.log(windowsValues.length);
+    return windowsValues;
+}
+
 compareMeasurement(input)
+compareMeasurement(computeWindowsValues(input))
